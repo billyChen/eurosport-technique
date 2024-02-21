@@ -13,15 +13,13 @@ describe("Player Cards Interaction", () => {
 });
 
 const checkFrontContentOfFirstCard = () => {
-  cy.get('[data-testid="front-content"]')
-    .first()
-    .should("contain", "Matches played");
+  cy.get('[data-testid="front-content"]').first().should("contain", "RANK");
 };
 
 const clickAndCheckBackContentOfFirstCard = () => {
   cy.get('[data-testid="flipcard"]').first().click();
 
-  cy.get('[data-testid="flipcard"]').first().should("contain", "Matches ratio");
+  cy.get('[data-testid="flipcard"]').first().should("contain", "Matches won");
 };
 
 const clickAndCheckBackContentOfSecondCard = () => {
@@ -29,17 +27,15 @@ const clickAndCheckBackContentOfSecondCard = () => {
 
   cy.get('[data-testid="flipcard"]')
     .first()
-    .should("not.contain", "Matches ratio");
-  cy.get('[data-testid="flipcard"]').eq(1).should("contain", "Matches ratio");
+    .should("not.contain", "Matches won");
+  cy.get('[data-testid="flipcard"]').eq(1).should("contain", "Matches won");
 };
 
 const clickSomewhereAndCheckNoBackContent = () => {
   cy.get("body").click(0, 0);
   cy.get('[data-testid="flipcard"]')
     .first()
-    .should("not.contain", "Matches ratio");
+    .should("not.contain", "Matches won");
 
-  cy.get('[data-testid="flipcard"]')
-    .eq(1)
-    .should("not.contain", "Matches ratio");
+  cy.get('[data-testid="flipcard"]').eq(1).should("not.contain", "Matches won");
 };

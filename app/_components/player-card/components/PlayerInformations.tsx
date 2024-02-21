@@ -71,7 +71,7 @@ const PlayerPictureAndName = ({ player }: PlayerPictureAndNameProps) => {
       />
 
       <div className="flex gap-2 flex-col p-2">
-        <span className="uppercase font-bold">{`${data.firstname} ${data.lastname}`}</span>
+        <span className="group-hover:underline uppercase font-bold">{`${data.firstname} ${data.lastname}`}</span>
         <Image
           src={data.country.picture.url}
           alt={"player nationality flag"}
