@@ -6,6 +6,8 @@ COPY package*.json ./
 
 RUN npm install
 
+RUN npm run relay
+
 COPY . .
 
 ENV NEXT_PUBLIC_RELAY_ENDPOINT=https://kf9p4bkih6.execute-api.eu-west-1.amazonaws.com/dev/
