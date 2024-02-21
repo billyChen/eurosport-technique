@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8f04321572fa8008ab8fedd5d39b9428>>
+ * @generated SignedSource<<cef2259816f206ae85ac7f4856edd008>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,24 +11,9 @@
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type PlayerCardFragment$data = {
-  readonly country: {
-    readonly picture: {
-      readonly url: string;
-    };
-  };
   readonly firstname: string;
   readonly id: string;
-  readonly lastname: string;
-  readonly picture: {
-    readonly url: string;
-  };
-  readonly stats: {
-    readonly age: number;
-    readonly height: number;
-    readonly points: number;
-    readonly rank: number;
-    readonly weight: number;
-  };
+  readonly " $fragmentSpreads": FragmentRefs<"PlayerInformationsFragment">;
   readonly " $fragmentType": "PlayerCardFragment";
 };
 export type PlayerCardFragment$key = {
@@ -36,26 +21,7 @@ export type PlayerCardFragment$key = {
   readonly " $fragmentSpreads": FragmentRefs<"PlayerCardFragment">;
 };
 
-const node: ReaderFragment = (function(){
-var v0 = {
-  "alias": null,
-  "args": null,
-  "concreteType": "Picture",
-  "kind": "LinkedField",
-  "name": "picture",
-  "plural": false,
-  "selections": [
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "url",
-      "storageKey": null
-    }
-  ],
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
@@ -76,77 +42,15 @@ return {
       "storageKey": null
     },
     {
-      "alias": null,
       "args": null,
-      "kind": "ScalarField",
-      "name": "lastname",
-      "storageKey": null
-    },
-    (v0/*: any*/),
-    {
-      "alias": null,
-      "args": null,
-      "concreteType": "Country",
-      "kind": "LinkedField",
-      "name": "country",
-      "plural": false,
-      "selections": [
-        (v0/*: any*/)
-      ],
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "concreteType": "Stats",
-      "kind": "LinkedField",
-      "name": "stats",
-      "plural": false,
-      "selections": [
-        {
-          "alias": null,
-          "args": null,
-          "kind": "ScalarField",
-          "name": "rank",
-          "storageKey": null
-        },
-        {
-          "alias": null,
-          "args": null,
-          "kind": "ScalarField",
-          "name": "points",
-          "storageKey": null
-        },
-        {
-          "alias": null,
-          "args": null,
-          "kind": "ScalarField",
-          "name": "weight",
-          "storageKey": null
-        },
-        {
-          "alias": null,
-          "args": null,
-          "kind": "ScalarField",
-          "name": "height",
-          "storageKey": null
-        },
-        {
-          "alias": null,
-          "args": null,
-          "kind": "ScalarField",
-          "name": "age",
-          "storageKey": null
-        }
-      ],
-      "storageKey": null
+      "kind": "FragmentSpread",
+      "name": "PlayerInformationsFragment"
     }
   ],
   "type": "Player",
   "abstractKey": null
 };
-})();
 
-(node as any).hash = "88454c05d2138b31a96a283520590580";
+(node as any).hash = "d4531933aff51a3775d15944da68998b";
 
 export default node;

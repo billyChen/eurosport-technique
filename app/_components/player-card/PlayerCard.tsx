@@ -1,3 +1,5 @@
+import { PlayerInformations } from "@/app/_components/player-card/components/PlayerInformations";
+import { PlayerCardFragment$key } from "@/app/_components/player-card/__generated__/PlayerCardFragment.graphql";
 import React from "react";
 import { useFragment } from "react-relay";
 import { graphql } from "relay-runtime";
@@ -6,31 +8,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { setActiveCardId } from "@/redux/features/playerCard/playerCardSlice";
 import { FlipCard } from "@/app/ui/flip-card/FlipCard";
 import { selectActiveCardId } from "@/redux/features/playerCard/selectors";
-import { PlayerCardFragment$key } from "@/app/_components/player-card/__generated__/PlayerCardFragment.graphql";
-import { FrontContent } from "@/app/_components/player-card/components/FrontContent";
 import { BackContent } from "@/app/_components/player-card/components/BackContent";
 
 const PlayerCardFragment = graphql`
   fragment PlayerCardFragment on Player {
     id
     firstname
-    lastname
-    picture {
-      url
-    }
-    country {
-      picture {
-        url
-      }
-    }
-
-    stats {
-      rank
-      points
-      weight
-      height
-      age
-    }
+    ...PlayerInformationsFragment
   }
 `;
 
@@ -67,7 +51,13 @@ export const PlayerCard = ({ player, matches }: PlayerCardProps) => {
       className="h-fit"
       isFlipped={isBackCardVisible}
       onValueChange={handleClick}
-      frontCard={<FrontContent />}
+      frontCard={
+        <PlayerInformations
+          handleClick={handleClick}
+          player={data}
+          matches={matches}
+        />
+      }
       backCard={<BackContent />}
     />
   );

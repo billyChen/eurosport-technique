@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<5ac0eb4aa7083704b3ca6bf3ef2c6233>>
+ * @generated SignedSource<<ec1832ad7073674286a534c5b7510763>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,27 +10,19 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type PlayerCardTestQuery$variables = Record<PropertyKey, never>;
-export type PlayerCardTestQuery$data = {
+export type PlayerInformationsTestQuery$variables = Record<PropertyKey, never>;
+export type PlayerInformationsTestQuery$data = {
   readonly players: ReadonlyArray<{
-    readonly id: string;
-    readonly " $fragmentSpreads": FragmentRefs<"PlayerCardFragment">;
+    readonly " $fragmentSpreads": FragmentRefs<"PlayerInformationsFragment">;
   }>;
 };
-export type PlayerCardTestQuery = {
-  response: PlayerCardTestQuery$data;
-  variables: PlayerCardTestQuery$variables;
+export type PlayerInformationsTestQuery = {
+  response: PlayerInformationsTestQuery$data;
+  variables: PlayerInformationsTestQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
 var v0 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "id",
-  "storageKey": null
-},
-v1 = {
   "alias": null,
   "args": null,
   "concreteType": "Picture",
@@ -48,19 +40,19 @@ v1 = {
   ],
   "storageKey": null
 },
-v2 = {
+v1 = {
   "enumValues": null,
   "nullable": false,
   "plural": false,
   "type": "Picture"
 },
-v3 = {
+v2 = {
   "enumValues": null,
   "nullable": false,
   "plural": false,
   "type": "String"
 },
-v4 = {
+v3 = {
   "enumValues": null,
   "nullable": false,
   "plural": false,
@@ -71,7 +63,7 @@ return {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "PlayerCardTestQuery",
+    "name": "PlayerInformationsTestQuery",
     "selections": [
       {
         "alias": null,
@@ -81,11 +73,10 @@ return {
         "name": "players",
         "plural": true,
         "selections": [
-          (v0/*: any*/),
           {
             "args": null,
             "kind": "FragmentSpread",
-            "name": "PlayerCardFragment"
+            "name": "PlayerInformationsFragment"
           }
         ],
         "storageKey": null
@@ -98,7 +89,7 @@ return {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "PlayerCardTestQuery",
+    "name": "PlayerInformationsTestQuery",
     "selections": [
       {
         "alias": null,
@@ -108,7 +99,6 @@ return {
         "name": "players",
         "plural": true,
         "selections": [
-          (v0/*: any*/),
           {
             "alias": null,
             "args": null,
@@ -123,7 +113,7 @@ return {
             "name": "lastname",
             "storageKey": null
           },
-          (v1/*: any*/),
+          (v0/*: any*/),
           {
             "alias": null,
             "args": null,
@@ -132,7 +122,7 @@ return {
             "name": "country",
             "plural": false,
             "selections": [
-              (v1/*: any*/)
+              (v0/*: any*/)
             ],
             "storageKey": null
           },
@@ -188,7 +178,7 @@ return {
     ]
   },
   "params": {
-    "cacheID": "0d59340bf9a015bd54bac0bdba2e4c24",
+    "cacheID": "03a110169bf62dacbf93a1a23bb2268e",
     "id": null,
     "metadata": {
       "relayTestingSelectionTypeInfo": {
@@ -204,33 +194,32 @@ return {
           "plural": false,
           "type": "Country"
         },
-        "players.country.picture": (v2/*: any*/),
-        "players.country.picture.url": (v3/*: any*/),
-        "players.firstname": (v3/*: any*/),
-        "players.id": (v3/*: any*/),
-        "players.lastname": (v3/*: any*/),
-        "players.picture": (v2/*: any*/),
-        "players.picture.url": (v3/*: any*/),
+        "players.country.picture": (v1/*: any*/),
+        "players.country.picture.url": (v2/*: any*/),
+        "players.firstname": (v2/*: any*/),
+        "players.lastname": (v2/*: any*/),
+        "players.picture": (v1/*: any*/),
+        "players.picture.url": (v2/*: any*/),
         "players.stats": {
           "enumValues": null,
           "nullable": false,
           "plural": false,
           "type": "Stats"
         },
-        "players.stats.age": (v4/*: any*/),
-        "players.stats.height": (v4/*: any*/),
-        "players.stats.points": (v4/*: any*/),
-        "players.stats.rank": (v4/*: any*/),
-        "players.stats.weight": (v4/*: any*/)
+        "players.stats.age": (v3/*: any*/),
+        "players.stats.height": (v3/*: any*/),
+        "players.stats.points": (v3/*: any*/),
+        "players.stats.rank": (v3/*: any*/),
+        "players.stats.weight": (v3/*: any*/)
       }
     },
-    "name": "PlayerCardTestQuery",
+    "name": "PlayerInformationsTestQuery",
     "operationKind": "query",
-    "text": "query PlayerCardTestQuery {\n  players {\n    id\n    ...PlayerCardFragment\n  }\n}\n\nfragment PlayerCardFragment on Player {\n  id\n  firstname\n  ...PlayerInformationsFragment\n}\n\nfragment PlayerInformationsFragment on Player {\n  firstname\n  lastname\n  picture {\n    url\n  }\n  country {\n    picture {\n      url\n    }\n  }\n  stats {\n    ...PlayerInformationsStatsFragment\n  }\n}\n\nfragment PlayerInformationsStatsFragment on Stats {\n  rank\n  points\n  weight\n  height\n  age\n}\n"
+    "text": "query PlayerInformationsTestQuery {\n  players {\n    ...PlayerInformationsFragment\n  }\n}\n\nfragment PlayerInformationsFragment on Player {\n  firstname\n  lastname\n  picture {\n    url\n  }\n  country {\n    picture {\n      url\n    }\n  }\n  stats {\n    ...PlayerInformationsStatsFragment\n  }\n}\n\nfragment PlayerInformationsStatsFragment on Stats {\n  rank\n  points\n  weight\n  height\n  age\n}\n"
   }
 };
 })();
 
-(node as any).hash = "7734a2cbdbecb45b9b1413e7a1a65ff2";
+(node as any).hash = "d794457a7fa7e644a263eec1a2e0ea21";
 
 export default node;

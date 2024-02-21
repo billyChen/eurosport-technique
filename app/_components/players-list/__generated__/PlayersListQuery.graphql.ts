@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<1cd1efc3c8ceac774023ad3f573ddeac>>
+ * @generated SignedSource<<f6eb820af48090269844871ef53f21d7>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -233,12 +233,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "115925eea67bc8ebbfc07456cb155175",
+    "cacheID": "8dc8633abc0691749bdf2fc6267878ec",
     "id": null,
     "metadata": {},
     "name": "PlayersListQuery",
     "operationKind": "query",
-    "text": "query PlayersListQuery {\n  players {\n    id\n    ...PlayerCardFragment\n  }\n  matches {\n    id\n    winner {\n      firstname\n    }\n    players {\n      firstname\n    }\n    startTime\n    endTime\n  }\n}\n\nfragment PlayerCardFragment on Player {\n  id\n  firstname\n  lastname\n  picture {\n    url\n  }\n  country {\n    picture {\n      url\n    }\n  }\n  stats {\n    rank\n    points\n    weight\n    height\n    age\n  }\n}\n"
+    "text": "query PlayersListQuery {\n  players {\n    id\n    ...PlayerCardFragment\n  }\n  matches {\n    id\n    winner {\n      firstname\n    }\n    players {\n      firstname\n    }\n    startTime\n    endTime\n  }\n}\n\nfragment PlayerCardFragment on Player {\n  id\n  firstname\n  ...PlayerInformationsFragment\n}\n\nfragment PlayerInformationsFragment on Player {\n  firstname\n  lastname\n  picture {\n    url\n  }\n  country {\n    picture {\n      url\n    }\n  }\n  stats {\n    ...PlayerInformationsStatsFragment\n  }\n}\n\nfragment PlayerInformationsStatsFragment on Stats {\n  rank\n  points\n  weight\n  height\n  age\n}\n"
   }
 };
 })();
