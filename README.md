@@ -31,7 +31,7 @@ This command reads the Dockerfile in the root directory and builds an image name
 Run the Docker container:
 
 ```
-docker run -p 3000:3000 eurosport
+docker run -it -d -p 3000:3000 eurosport
 ```
 
 This command runs the container and maps port 3000 of the container to port 3000 on your host machine.
