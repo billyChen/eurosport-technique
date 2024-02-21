@@ -1,10 +1,5 @@
-import { createMockEnvironment, MockPayloadGenerator } from "relay-test-utils";
-import { render, screen } from "@testing-library/react";
-import { useLazyLoadQuery } from "react-relay";
+import { render } from "@testing-library/react";
 import { Match } from "@/app/_components/player-card/PlayerCard";
-import { TestProviders } from "@/tests/TestProviders";
-import { PlayerInformations } from "@/app/_components/player-card/components/PlayerInformations";
-import { PlayerInformationsTestQuery } from "@/app/_components/player-card/__tests__/__generated__/PlayerInformationsTestQuery.graphql";
 import { PlayersTotalWinsLosses } from "@/app/_components/players-total-wins-losses/PlayersTotalWinsLosses";
 
 const mockMatchesData: readonly Match[] = [

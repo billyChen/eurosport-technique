@@ -5,13 +5,6 @@ import { PlayerCard } from "@/app/_components/player-card/PlayerCard";
 import { PlayersListQuery } from "@/app/_components/players-list/__generated__/PlayersListQuery.graphql";
 import { TestProviders } from "@/tests/TestProviders";
 
-jest.mock("next/image", () => ({
-  __esModule: true,
-  default: (props: any) => {
-    return <img {...props} />;
-  },
-}));
-
 const TestQuery = graphql`
   query PlayerCardTestQuery @relay_test_operation {
     players {

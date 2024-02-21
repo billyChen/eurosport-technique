@@ -1,4 +1,3 @@
-// src/features/playerCard/playerCardSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface PlayerCardState {
