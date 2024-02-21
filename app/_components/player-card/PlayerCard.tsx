@@ -7,8 +7,8 @@ import { graphql } from "relay-runtime";
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveCardId } from "@/redux/features/playerCard/playerCardSlice";
 import { FlipCard } from "@/app/ui/flip-card/FlipCard";
+import { PlayerMatchesStats } from "@/app/_components/player-card/components/PlayerMatchesStats";
 import { selectActiveCardId } from "@/redux/features/playerCard/selectors";
-import { BackContent } from "@/app/_components/player-card/components/BackContent";
 
 const PlayerCardFragment = graphql`
   fragment PlayerCardFragment on Player {
@@ -58,7 +58,13 @@ export const PlayerCard = ({ player, matches }: PlayerCardProps) => {
           matches={matches}
         />
       }
-      backCard={<BackContent />}
+      backCard={
+        <PlayerMatchesStats
+          handleClick={handleClick}
+          matches={matches}
+          playerId={data.firstname}
+        />
+      }
     />
   );
 };
