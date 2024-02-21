@@ -26,10 +26,6 @@ export const PlayerMatchesStats = ({
     (match) => match.winner.firstname === playerId,
   );
 
-  const losingMatches = matches.filter(
-    (match) => match.winner.firstname !== playerId,
-  );
-
   return (
     <div
       data-testid="back-content"
@@ -37,25 +33,6 @@ export const PlayerMatchesStats = ({
       onClick={handleClick}
     >
       <div className="flex flex-col gap-2">
-        <div className="border-b-2 border-black">
-          <p>Matches ratio</p>
-        </div>
-
-        <div className="flex justify-center gap-4 font-bold p-2">
-          <div className="flex flex-col items-center">
-            <span data-testid="wins-matches-count" className="text-2xl">
-              {winningMatches.length}
-            </span>
-            <span className="text-xs">Wins</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <span data-testid="losses-matches-count" className="text-2xl">
-              {losingMatches.length}
-            </span>
-            <span className="text-xs">Losses</span>
-          </div>
-        </div>
-
         <div className="border-b-2 border-black">
           <p>Matches won</p>
         </div>

@@ -2,6 +2,7 @@
 
 import { PlayerCard } from "@/app/_components/player-card/PlayerCard";
 import { PlayersListQuery } from "@/app/_components/players-list/__generated__/PlayersListQuery.graphql";
+import { PlayersTotalWinsLosses } from "@/app/_components/players-total-wins-losses/PlayersTotalWinsLosses";
 import { setActiveCardId } from "@/redux/features/playerCard/playerCardSlice";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -17,6 +18,7 @@ const PlayersListQuery = graphql`
     matches {
       id
       winner {
+        id
         firstname
       }
       players {
@@ -44,8 +46,6 @@ export const PlayersList = () => {
 
   if (!data) return <div>Loading...</div>;
 
-  const { matches } = data;
-
   if (data.players.length === 0)
     return (
       <div className="w-full h-full flex justify-center items-center">
@@ -53,11 +53,20 @@ export const PlayersList = () => {
       </div>
     );
 
+  const { matches } = data;
+
   return (
-    <div className="grid grid-cols-1 gap-4 w-full p-2 md:grid-cols-3 md:justify-center md:p-6">
-      {data.players.map((player) => (
-        <PlayerCard key={player.id} player={player} matches={matches} />
-      ))}
+    <div className="grid grid-cols-1 grid-rows-1 w-full p-4 md:justify-center md:p-6 gap-2">
+      <PlayersTotalWinsLosses
+        matches={matches}
+        playerAId={data.players[0].id}
+        playerBId={data.players[1].id}
+      />
+
+      <div className="flex flex-nowrap">
+        <PlayerCard player={data.players[0]} matches={matches} />
+        <PlayerCard player={data.players[1]} matches={matches} />
+      </div>
     </div>
   );
 };

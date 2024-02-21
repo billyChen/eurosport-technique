@@ -20,21 +20,21 @@ const mockPlayerData = {
 const mockMatchesData: readonly Match[] = [
   {
     id: "match1",
-    winner: { firstname: "John" },
+    winner: { id: "player-1", firstname: "John" },
     players: [{ firstname: "John" }, { firstname: "Jane" }],
     startTime: "2021-01-01T00:00:00Z",
     endTime: "2021-01-01T02:00:00Z",
   },
   {
     id: "match2",
-    winner: { firstname: "John" },
+    winner: { id: "player-1", firstname: "John" },
     players: [{ firstname: "John" }, { firstname: "Jane" }],
     startTime: "2021-01-02T00:00:00Z",
     endTime: "2021-01-02T02:30:00Z",
   },
   {
     id: "match3",
-    winner: { firstname: "Jane" },
+    winner: { id: "player-2", firstname: "Jane" },
     players: [{ firstname: "John" }, { firstname: "Jane" }],
     startTime: "2021-12-12T00:00:00Z",
     endTime: "2021-12-12T00:27:00Z",
@@ -62,14 +62,6 @@ describe("Player matches stats", () => {
         playerId={"John"}
         matches={mockMatchesData}
       />,
-    );
-
-    expect(await screen.queryByText("Matches ratio")).toBeInTheDocument();
-    expect(await screen.findByTestId("wins-matches-count")).toHaveTextContent(
-      "2",
-    );
-    expect(await screen.findByTestId("losses-matches-count")).toHaveTextContent(
-      "1",
     );
   });
 

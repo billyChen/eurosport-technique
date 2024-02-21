@@ -6,7 +6,7 @@ import { graphql } from "relay-runtime";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveCardId } from "@/redux/features/playerCard/playerCardSlice";
-import { FlipCard } from "@/app/ui/flip-card/FlipCard";
+import { FlipCard } from "@/ui/flip-card/FlipCard";
 import { PlayerMatchesStats } from "@/app/_components/player-card/components/PlayerMatchesStats";
 import { selectActiveCardId } from "@/redux/features/playerCard/selectors";
 
@@ -20,7 +20,7 @@ const PlayerCardFragment = graphql`
 
 export type Match = {
   id: string;
-  winner: { firstname: string };
+  winner: { id: string; firstname: string };
   players: readonly { firstname: string }[];
   startTime: string;
   endTime: string;

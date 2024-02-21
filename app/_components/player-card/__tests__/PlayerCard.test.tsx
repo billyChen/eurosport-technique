@@ -41,21 +41,21 @@ describe("PlayerCard", () => {
   const mockMatchesData = [
     {
       id: "match1",
-      winner: { firstname: "John" },
+      winner: { id: "player-1", firstname: "John" },
       players: [{ firstname: "John" }, { firstname: "Jane" }],
       startTime: "2021-01-01T00:00:00Z",
       endTime: "2021-01-01T02:00:00Z",
     },
     {
       id: "match2",
-      winner: { firstname: "John" },
+      winner: { id: "player-1", firstname: "John" },
       players: [{ firstname: "Homer" }, { firstname: "Jane" }],
       startTime: "2021-01-01T00:00:00Z",
       endTime: "2021-01-01T02:00:00Z",
     },
     {
       id: "match3",
-      winner: { firstname: "John" },
+      winner: { id: "player-1", firstname: "John" },
       players: [{ firstname: "John" }, { firstname: "Jane" }],
       startTime: "2021-01-01T00:00:00Z",
       endTime: "2021-01-01T00:27:00Z",

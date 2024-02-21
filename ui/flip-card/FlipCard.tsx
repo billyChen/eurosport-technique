@@ -33,11 +33,11 @@ export const FlipCard = ({
       {...props}
       role="button"
       tabIndex={0}
-      onKeyDown={handleKeyDown} 
+      onKeyDown={handleKeyDown}
       aria-pressed={isFlipped}
       onClick={handleClick}
       className={classnames(
-        "flex w-full flex-col justify-center items-center border",
+        "group bg-white flex w-full flex-col border",
         className,
       )}
     >

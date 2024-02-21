@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<e8c085a78011ba4143cc81e75919e849>>
+ * @generated SignedSource<<9990e22a4fd3605b05e2e470b3486bcb>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,19 +11,10 @@
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type PlayerInformationsFragment$data = {
-  readonly country: {
-    readonly picture: {
-      readonly url: string;
-    };
-  };
-  readonly firstname: string;
-  readonly lastname: string;
-  readonly picture: {
-    readonly url: string;
-  };
   readonly stats: {
     readonly " $fragmentSpreads": FragmentRefs<"PlayerInformationsStatsFragment">;
   };
+  readonly " $fragmentSpreads": FragmentRefs<"PlayerInformationsPictureAndNameFragment">;
   readonly " $fragmentType": "PlayerInformationsFragment";
 };
 export type PlayerInformationsFragment$key = {
@@ -31,57 +22,16 @@ export type PlayerInformationsFragment$key = {
   readonly " $fragmentSpreads": FragmentRefs<"PlayerInformationsFragment">;
 };
 
-const node: ReaderFragment = (function(){
-var v0 = {
-  "alias": null,
-  "args": null,
-  "concreteType": "Picture",
-  "kind": "LinkedField",
-  "name": "picture",
-  "plural": false,
-  "selections": [
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "url",
-      "storageKey": null
-    }
-  ],
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
   "name": "PlayerInformationsFragment",
   "selections": [
     {
-      "alias": null,
       "args": null,
-      "kind": "ScalarField",
-      "name": "firstname",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "lastname",
-      "storageKey": null
-    },
-    (v0/*: any*/),
-    {
-      "alias": null,
-      "args": null,
-      "concreteType": "Country",
-      "kind": "LinkedField",
-      "name": "country",
-      "plural": false,
-      "selections": [
-        (v0/*: any*/)
-      ],
-      "storageKey": null
+      "kind": "FragmentSpread",
+      "name": "PlayerInformationsPictureAndNameFragment"
     },
     {
       "alias": null,
@@ -103,8 +53,7 @@ return {
   "type": "Player",
   "abstractKey": null
 };
-})();
 
-(node as any).hash = "faddf7df95be02bd392a822b2cb7caa8";
+(node as any).hash = "47351597e8eeafcf1ddb80836a768573";
 
 export default node;

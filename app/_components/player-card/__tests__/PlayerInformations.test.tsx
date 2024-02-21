@@ -38,21 +38,21 @@ const mockPlayerData = {
 const mockMatchesData: readonly Match[] = [
   {
     id: "match1",
-    winner: { firstname: "John" },
+    winner: { id: "player-1", firstname: "John" },
     players: [{ firstname: "John" }, { firstname: "Jane" }],
     startTime: "2021-01-01T00:00:00Z",
     endTime: "2021-01-01T02:00:00Z",
   },
   {
     id: "match2",
-    winner: { firstname: "John" },
+    winner: { id: "player-1", firstname: "John" },
     players: [{ firstname: "Homer" }, { firstname: "Jane" }],
     startTime: "2021-01-01T00:00:00Z",
     endTime: "2021-01-01T02:00:00Z",
   },
   {
     id: "match3",
-    winner: { firstname: "John" },
+    winner: { id: "player-1", firstname: "John" },
     players: [{ firstname: "John" }, { firstname: "Jane" }],
     startTime: "2021-01-01T00:00:00Z",
     endTime: "2021-01-01T00:27:00Z",
@@ -129,11 +129,6 @@ describe("Player informations", () => {
         <TestRenderer />
       </TestProviders>,
     );
-
-    expect(screen.getByText("Matches played")).toBeInTheDocument();
-    expect(screen.getByText("Minutes played")).toBeInTheDocument();
-    expect(screen.getByTestId("matches-played-count")).toHaveTextContent("2");
-    expect(screen.getByTestId("minutes-played-count")).toHaveTextContent("147");
   });
 
   it("should display player stats", async () => {
@@ -156,11 +151,11 @@ describe("Player informations", () => {
         <TestRenderer />
       </TestProviders>,
     );
-    expect(screen.getByText("rank")).toBeInTheDocument();
-    expect(screen.getByText("points")).toBeInTheDocument();
-    expect(screen.getByText("height")).toBeInTheDocument();
-    expect(screen.getByText("weight")).toBeInTheDocument();
-    expect(screen.getByText("age")).toBeInTheDocument();
+    expect(screen.getByText("RANK")).toBeInTheDocument();
+    expect(screen.getByText("POINTS")).toBeInTheDocument();
+    expect(screen.getByText("HEIGHT")).toBeInTheDocument();
+    expect(screen.getByText("WEIGHT")).toBeInTheDocument();
+    expect(screen.getByText("AGE")).toBeInTheDocument();
     expect(screen.getByTestId("rank-value")).toHaveTextContent("5");
     expect(screen.getByTestId("points-value")).toHaveTextContent("1234");
     expect(screen.getByTestId("height-value")).toHaveTextContent("1.8 m");

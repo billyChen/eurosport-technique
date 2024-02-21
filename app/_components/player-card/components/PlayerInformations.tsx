@@ -1,7 +1,7 @@
 import { Match } from "@/app/_components/player-card/PlayerCard";
 import { PlayerInformationsFragment$key } from "@/app/_components/player-card/components/__generated__/PlayerInformationsFragment.graphql";
+import { PlayerInformationsPictureAndNameFragment$key } from "@/app/_components/player-card/components/__generated__/PlayerInformationsPictureAndNameFragment.graphql";
 import { PlayerInformationsStatsFragment$key } from "@/app/_components/player-card/components/__generated__/PlayerInformationsStatsFragment.graphql";
-import moment from "moment";
 import Image from "next/image";
 import React from "react";
 import { useFragment } from "react-relay";
@@ -9,6 +9,15 @@ import { graphql } from "relay-runtime";
 
 const PlayerInformationsFragment = graphql`
   fragment PlayerInformationsFragment on Player {
+    ...PlayerInformationsPictureAndNameFragment
+    stats {
+      ...PlayerInformationsStatsFragment
+    }
+  }
+`;
+
+const PlayerInformationsPictureAndNameFragment = graphql`
+  fragment PlayerInformationsPictureAndNameFragment on Player {
     firstname
     lastname
     picture {
@@ -18,10 +27,6 @@ const PlayerInformationsFragment = graphql`
       picture {
         url
       }
-    }
-
-    stats {
-      ...PlayerInformationsStatsFragment
     }
   }
 `;
@@ -46,17 +51,36 @@ type PlayerStatsProps = {
   stats: PlayerInformationsStatsFragment$key;
 };
 
+type PlayerPictureAndNameProps = {
+  player: PlayerInformationsPictureAndNameFragment$key;
+};
+
 const convertGramsToKilograms = (grams: number) => grams / 1000;
 const convertCmToMeters = (cm: number) => cm / 100;
 
-const calculateTotalMinutesPlayed = (matches: Match[]) => {
-  return matches.reduce((prev, curr) => {
-    const start = moment(curr.startTime);
-    const end = moment(curr.endTime);
-    const duration = end.diff(start, "minutes");
+const PlayerPictureAndName = ({ player }: PlayerPictureAndNameProps) => {
+  const data = useFragment(PlayerInformationsPictureAndNameFragment, player);
 
-    return prev + duration;
-  }, 0);
+  return (
+    <div className="flex gap-2">
+      <Image
+        src={data.picture.url}
+        alt={"profile picture"}
+        width={70}
+        height={90}
+      />
+
+      <div className="flex gap-2 flex-col p-2">
+        <span className="uppercase font-bold">{`${data.firstname} ${data.lastname}`}</span>
+        <Image
+          src={data.country.picture.url}
+          alt={"player nationality flag"}
+          width={35}
+          height={5}
+        />
+      </div>
+    </div>
+  );
 };
 
 export const PlayerStats = ({ stats }: PlayerStatsProps) => {
@@ -66,81 +90,58 @@ export const PlayerStats = ({ stats }: PlayerStatsProps) => {
   const height = convertCmToMeters(data.height);
 
   return (
-    <div className="p-2">
-      <div className="border-y border-gray-300 bg-gray-100 text-gray-400">
-        <p>Stats</p>
-      </div>
+    <div className="border-t text-xs">
+      <div className="p-2 flex flex-col gap-2 px-8">
+        <div className="flex w-full justify-between border-b pb-2 gap-8">
+          <div className="flex justify-between w-full">
+            <span>RANK</span>
+            <span className="font-bold" data-testid="rank-value">
+              {data.rank}
+            </span>
+          </div>
 
-      <div className="p-2 flex flex-col gap-2">
-        <div className="flex justify-between">
-          <span>rank</span>
-          <span data-testid="rank-value">{data.rank}</span>
+          <div className="flex justify-between w-full">
+            <span>POINTS</span>
+            <span className="font-bold" data-testid="points-value">
+              {data.points}
+            </span>
+          </div>
         </div>
+
         <div className="flex justify-between">
-          <span>points</span>
-          <span data-testid="points-value">{data.points}</span>
-        </div>
-        <div className="flex justify-between">
-          <span>weight</span>
-          <span data-testid="weight-value">{`${weight} kg`}</span>
-        </div>
-        <div className="flex justify-between">
-          <span>height</span>
-          <span data-testid="height-value">{`${height} m`}</span>
-        </div>
-        <div className="flex justify-between">
-          <span>age</span>
-          <span data-testid="age-value">{data.age}</span>
+          <div className="flex flex-col items-center">
+            <span>WEIGHT</span>
+            <span
+              className="font-bold"
+              data-testid="weight-value"
+            >{`${weight} kg`}</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <span>HEIGHT</span>
+            <span
+              className="font-bold"
+              data-testid="height-value"
+            >{`${height} m`}</span>
+          </div>
+
+          <div className="flex flex-col items-center">
+            <span>AGE</span>
+            <span className="font-bold" data-testid="age-value">
+              {data.age}
+            </span>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export const PlayerInformations = ({ player, matches }: Props) => {
+export const PlayerInformations = ({ player }: Props) => {
   const data = useFragment(PlayerInformationsFragment, player);
-  const playerMatches = matches.filter((match) =>
-    match.players.some((p) => p.firstname === data.firstname),
-  );
-
-  const minutesPlayed = calculateTotalMinutesPlayed(playerMatches);
-  const matchesPlayed = playerMatches.length;
 
   return (
-    <div
-      data-testid="front-content"
-      className="flex flex-col gap-2 items-center"
-    >
-      <Image
-        src={data.picture.url}
-        alt={"profile picture"}
-        width={100}
-        height={100}
-      />
-
-      <div className="flex gap-2">
-        <Image
-          src={data.country.picture.url}
-          alt={"player nationality flag"}
-          width={30}
-          height={5}
-        />
-        <span>{`${data.firstname} ${data.lastname}`}</span>
-      </div>
-
-      <div className="flex gap-2 justify-center">
-        <div className="">
-          <div data-testid="matches-played-count">{matchesPlayed}</div>
-
-          <div>Matches played</div>
-        </div>
-        <div className="">
-          <div data-testid="minutes-played-count">{minutesPlayed}</div>
-
-          <div>Minutes played</div>
-        </div>
-      </div>
-
+    <div data-testid="front-content" className="flex flex-col">
+      <PlayerPictureAndName player={data} />
       <PlayerStats stats={data.stats} />
     </div>
   );

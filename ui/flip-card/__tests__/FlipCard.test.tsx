@@ -1,4 +1,4 @@
-import { FlipCard } from "@/app/ui/flip-card/FlipCard";
+import { FlipCard } from "@/ui/flip-card/FlipCard";
 import { render, screen } from "@testing-library/react";
 
 describe("FlipCard", () => {

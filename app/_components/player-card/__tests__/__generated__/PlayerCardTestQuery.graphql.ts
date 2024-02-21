@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<5ac0eb4aa7083704b3ca6bf3ef2c6233>>
+ * @generated SignedSource<<1bb440523b0bfce637996286e29caa6e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -188,7 +188,7 @@ return {
     ]
   },
   "params": {
-    "cacheID": "0d59340bf9a015bd54bac0bdba2e4c24",
+    "cacheID": "7665d30c8291667c6dcec359e5f2ef7a",
     "id": null,
     "metadata": {
       "relayTestingSelectionTypeInfo": {
@@ -226,7 +226,7 @@ return {
     },
     "name": "PlayerCardTestQuery",
     "operationKind": "query",
-    "text": "query PlayerCardTestQuery {\n  players {\n    id\n    ...PlayerCardFragment\n  }\n}\n\nfragment PlayerCardFragment on Player {\n  id\n  firstname\n  ...PlayerInformationsFragment\n}\n\nfragment PlayerInformationsFragment on Player {\n  firstname\n  lastname\n  picture {\n    url\n  }\n  country {\n    picture {\n      url\n    }\n  }\n  stats {\n    ...PlayerInformationsStatsFragment\n  }\n}\n\nfragment PlayerInformationsStatsFragment on Stats {\n  rank\n  points\n  weight\n  height\n  age\n}\n"
+    "text": "query PlayerCardTestQuery {\n  players {\n    id\n    ...PlayerCardFragment\n  }\n}\n\nfragment PlayerCardFragment on Player {\n  id\n  firstname\n  ...PlayerInformationsFragment\n}\n\nfragment PlayerInformationsFragment on Player {\n  ...PlayerInformationsPictureAndNameFragment\n  stats {\n    ...PlayerInformationsStatsFragment\n  }\n}\n\nfragment PlayerInformationsPictureAndNameFragment on Player {\n  firstname\n  lastname\n  picture {\n    url\n  }\n  country {\n    picture {\n      url\n    }\n  }\n}\n\nfragment PlayerInformationsStatsFragment on Stats {\n  rank\n  points\n  weight\n  height\n  age\n}\n"
   }
 };
 })();

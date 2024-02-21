@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<f6eb820af48090269844871ef53f21d7>>
+ * @generated SignedSource<<88b15582b7e1118c22dc92de36843ec3>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -21,6 +21,7 @@ export type PlayersListQuery$data = {
     readonly startTime: string;
     readonly winner: {
       readonly firstname: string;
+      readonly id: string;
     };
   }>;
   readonly players: ReadonlyArray<{
@@ -48,10 +49,7 @@ v1 = {
   "name": "firstname",
   "storageKey": null
 },
-v2 = [
-  (v1/*: any*/)
-],
-v3 = {
+v2 = {
   "alias": null,
   "args": null,
   "concreteType": "Match",
@@ -67,7 +65,10 @@ v3 = {
       "kind": "LinkedField",
       "name": "winner",
       "plural": false,
-      "selections": (v2/*: any*/),
+      "selections": [
+        (v0/*: any*/),
+        (v1/*: any*/)
+      ],
       "storageKey": null
     },
     {
@@ -77,7 +78,9 @@ v3 = {
       "kind": "LinkedField",
       "name": "players",
       "plural": true,
-      "selections": (v2/*: any*/),
+      "selections": [
+        (v1/*: any*/)
+      ],
       "storageKey": null
     },
     {
@@ -97,7 +100,7 @@ v3 = {
   ],
   "storageKey": null
 },
-v4 = {
+v3 = {
   "alias": null,
   "args": null,
   "concreteType": "Picture",
@@ -139,7 +142,7 @@ return {
         ],
         "storageKey": null
       },
-      (v3/*: any*/)
+      (v2/*: any*/)
     ],
     "type": "Query",
     "abstractKey": null
@@ -167,7 +170,7 @@ return {
             "name": "lastname",
             "storageKey": null
           },
-          (v4/*: any*/),
+          (v3/*: any*/),
           {
             "alias": null,
             "args": null,
@@ -176,7 +179,7 @@ return {
             "name": "country",
             "plural": false,
             "selections": [
-              (v4/*: any*/)
+              (v3/*: any*/)
             ],
             "storageKey": null
           },
@@ -229,20 +232,20 @@ return {
         ],
         "storageKey": null
       },
-      (v3/*: any*/)
+      (v2/*: any*/)
     ]
   },
   "params": {
-    "cacheID": "8dc8633abc0691749bdf2fc6267878ec",
+    "cacheID": "cdafa58ae3b6dd8afe46639203c987f6",
     "id": null,
     "metadata": {},
     "name": "PlayersListQuery",
     "operationKind": "query",
-    "text": "query PlayersListQuery {\n  players {\n    id\n    ...PlayerCardFragment\n  }\n  matches {\n    id\n    winner {\n      firstname\n    }\n    players {\n      firstname\n    }\n    startTime\n    endTime\n  }\n}\n\nfragment PlayerCardFragment on Player {\n  id\n  firstname\n  ...PlayerInformationsFragment\n}\n\nfragment PlayerInformationsFragment on Player {\n  firstname\n  lastname\n  picture {\n    url\n  }\n  country {\n    picture {\n      url\n    }\n  }\n  stats {\n    ...PlayerInformationsStatsFragment\n  }\n}\n\nfragment PlayerInformationsStatsFragment on Stats {\n  rank\n  points\n  weight\n  height\n  age\n}\n"
+    "text": "query PlayersListQuery {\n  players {\n    id\n    ...PlayerCardFragment\n  }\n  matches {\n    id\n    winner {\n      id\n      firstname\n    }\n    players {\n      firstname\n    }\n    startTime\n    endTime\n  }\n}\n\nfragment PlayerCardFragment on Player {\n  id\n  firstname\n  ...PlayerInformationsFragment\n}\n\nfragment PlayerInformationsFragment on Player {\n  ...PlayerInformationsPictureAndNameFragment\n  stats {\n    ...PlayerInformationsStatsFragment\n  }\n}\n\nfragment PlayerInformationsPictureAndNameFragment on Player {\n  firstname\n  lastname\n  picture {\n    url\n  }\n  country {\n    picture {\n      url\n    }\n  }\n}\n\nfragment PlayerInformationsStatsFragment on Stats {\n  rank\n  points\n  weight\n  height\n  age\n}\n"
   }
 };
 })();
 
-(node as any).hash = "b0d64b18df2efa3dbd04420600f7e9eb";
+(node as any).hash = "4e476c3d10482e069cdb17f635c79cda";
 
 export default node;
