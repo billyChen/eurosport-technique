@@ -108,29 +108,6 @@ describe("Player informations", () => {
     );
   });
 
-  it("should display player's matches summary", async () => {
-    const TestRenderer = () => {
-      const data = useLazyLoadQuery<PlayerInformationsTestQuery>(
-        PlayerInformationsTestQuery,
-        {},
-      );
-
-      return (
-        <PlayerInformations
-          handleClick={() => {}}
-          player={data.players[0]}
-          matches={mockMatchesData}
-        />
-      );
-    };
-
-    render(
-      <TestProviders mockEnvironment={mockEnvironment}>
-        <TestRenderer />
-      </TestProviders>,
-    );
-  });
-
   it("should display player stats", async () => {
     const TestRenderer = () => {
       const data = useLazyLoadQuery<PlayerInformationsTestQuery>(

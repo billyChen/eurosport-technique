@@ -1,21 +1,7 @@
-import { createMockEnvironment, MockPayloadGenerator } from "relay-test-utils";
+import { createMockEnvironment } from "relay-test-utils";
 import { render, screen } from "@testing-library/react";
 import { Match } from "@/app/_components/player-card/PlayerCard";
 import { PlayerMatchesStats } from "@/app/_components/player-card/components/PlayerMatchesStats";
-
-const mockPlayerData = {
-  firstname: "John",
-  lastname: "Doe",
-  picture: { url: "https://example.com/player.jpg" },
-  country: { picture: { url: "https://example.com/country.jpg" } },
-  stats: {
-    rank: 5,
-    points: 1234,
-    weight: 80000,
-    height: 180,
-    age: 25,
-  },
-};
 
 const mockMatchesData: readonly Match[] = [
   {
@@ -42,19 +28,6 @@ const mockMatchesData: readonly Match[] = [
 ];
 
 describe("Player matches stats", () => {
-  const mockEnvironment = createMockEnvironment();
-
-  beforeEach(() => {
-    mockEnvironment.mockClear();
-    mockEnvironment.mock.queueOperationResolver((operation) =>
-      MockPayloadGenerator.generate(operation, {
-        Player() {
-          return mockPlayerData;
-        },
-      }),
-    );
-  });
-
   it("should display player Wins/Losses ratio", async () => {
     render(
       <PlayerMatchesStats
