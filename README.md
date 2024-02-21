@@ -47,7 +47,7 @@ Jest is used for unit and integration testing. To run Jest tests:
 Ensure you have installed all dependencies:
 
 ```
-npm install
+npm install && npm run relay
 ```
 
 Run Jest tests with:
