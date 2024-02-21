@@ -2,7 +2,7 @@
 import { Environment, Network, RecordSource, Store } from "relay-runtime";
 
 function fetchQuery(operation, variables) {
-  return fetch("https://kf9p4bkih6.execute-api.eu-west-1.amazonaws.com/dev/", {
+  return fetch(process.env.NEXT_PUBLIC_RELAY_ENDPOINT, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

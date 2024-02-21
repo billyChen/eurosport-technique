@@ -1,6 +1,12 @@
 // src/app/store.js
 import { configureStore } from "@reduxjs/toolkit";
-import playerCardReducer from "./features/playerCard/playerCardSlice";
+import playerCardReducer, {
+  PlayerCardState,
+} from "./features/playerCard/playerCardSlice";
+
+export interface RootState {
+  playerCard: PlayerCardState;
+}
 
 export const store = configureStore({
   reducer: {

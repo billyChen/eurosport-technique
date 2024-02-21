@@ -1,6 +1,10 @@
 // src/features/playerCard/playerCardSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
+export interface PlayerCardState {
+  activeCardId: string | null;
+}
+
 export const playerCardSlice = createSlice({
   name: "playerCard",
   initialState: {
