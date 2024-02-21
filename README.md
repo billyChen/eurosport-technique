@@ -16,31 +16,31 @@ The application is containerized using Docker
 2. Clone the repository to your local machine:
 
    ```
-   git clone <repository-url>
-   cd <repository-name>
+   git clone https://github.com/billyChen/eurosport-technique.git
+   cd eurosport-technique
    ```
 
-   Build the Docker image:
+Build the Docker image:
 
 ```
-docker build -t my-nextjs-app .
+docker build -t eurosport .
 ```
 
-This command reads the Dockerfile in the root directory and builds an image named my-nextjs-app.
+This command reads the Dockerfile in the root directory and builds an image named eurosport.
 
 Run the Docker container:
 
 ```
-docker run -p 3000:3000 my-nextjs-app
+docker run -p 3000:3000 eurosport
 ```
 
 This command runs the container and maps port 3000 of the container to port 3000 on your host machine.
 
 Navigate to http://localhost:3000 in your web browser to access the application.
 
-## Running Tests
+# Running Tests
 
-# Jest
+## Jest
 
 Jest is used for unit and integration testing. To run Jest tests:
 
@@ -58,7 +58,7 @@ npm run test
 
 This script executes the Jest test suites defined in your project.
 
-# Cypress
+## Cypress
 
 Cypress is used for end-to-end testing. To run Cypress tests:
 
