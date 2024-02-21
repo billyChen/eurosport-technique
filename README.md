@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Eurosport test technique
 
-## Getting Started
+## Technology Stack
 
-First, run the development server:
+- **Next.js**
+- **React Relay**
+- **Redux**
+- **Cypress**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Running the Application
+
+The application is containerized using Docker
+
+1. Ensure you have Docker installed on your machine.
+
+2. Clone the repository to your local machine:
+
+   ```
+   git clone <repository-url>
+   cd <repository-name>
+   ```
+
+   Build the Docker image:
+
+```
+docker build -t my-nextjs-app .
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This command reads the Dockerfile in the root directory and builds an image named my-nextjs-app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Run the Docker container:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```
+docker run -p 3000:3000 my-nextjs-app
+```
 
-## Learn More
+This command runs the container and maps port 3000 of the container to port 3000 on your host machine.
 
-To learn more about Next.js, take a look at the following resources:
+Navigate to http://localhost:3000 in your web browser to access the application.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Running Tests
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+# Jest
 
-## Deploy on Vercel
+Jest is used for unit and integration testing. To run Jest tests:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Ensure you have installed all dependencies:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+npm install
+```
+
+Run Jest tests with:
+
+```
+npm run test
+```
+
+This script executes the Jest test suites defined in your project.
+
+# Cypress
+
+Cypress is used for end-to-end testing. To run Cypress tests:
+
+Ensure the application is running (either locally or in a Docker container).
+
+Open a new terminal window and navigate to the project directory.
+
+Start Cypress with:
+
+```
+npx cypress open
+```
+
+Alternatively, to run Cypress tests in headless mode:
+
+```
+npx cypress run
+```

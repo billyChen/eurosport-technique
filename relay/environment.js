@@ -1,4 +1,3 @@
-// relay/environment.js
 import { Environment, Network, RecordSource, Store } from "relay-runtime";
 
 function fetchQuery(operation, variables) {
@@ -8,7 +7,7 @@ function fetchQuery(operation, variables) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      query: operation.text, // GraphQL text from operation
+      query: operation.text,
       variables,
     }),
   }).then((response) => {
