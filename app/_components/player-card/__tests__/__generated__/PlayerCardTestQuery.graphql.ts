@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<1cd1efc3c8ceac774023ad3f573ddeac>>
+ * @generated SignedSource<<542d1dd2a0b394273e6b216cc61f3ff8>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,27 +10,16 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type PlayersListQuery$variables = Record<PropertyKey, never>;
-export type PlayersListQuery$data = {
-  readonly matches: ReadonlyArray<{
-    readonly endTime: string;
-    readonly id: string;
-    readonly players: ReadonlyArray<{
-      readonly firstname: string;
-    }>;
-    readonly startTime: string;
-    readonly winner: {
-      readonly firstname: string;
-    };
-  }>;
+export type PlayerCardTestQuery$variables = Record<PropertyKey, never>;
+export type PlayerCardTestQuery$data = {
   readonly players: ReadonlyArray<{
     readonly id: string;
     readonly " $fragmentSpreads": FragmentRefs<"PlayerCardFragment">;
   }>;
 };
-export type PlayersListQuery = {
-  response: PlayersListQuery$data;
-  variables: PlayersListQuery$variables;
+export type PlayerCardTestQuery = {
+  response: PlayerCardTestQuery$data;
+  variables: PlayerCardTestQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -42,62 +31,6 @@ var v0 = {
   "storageKey": null
 },
 v1 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "firstname",
-  "storageKey": null
-},
-v2 = [
-  (v1/*: any*/)
-],
-v3 = {
-  "alias": null,
-  "args": null,
-  "concreteType": "Match",
-  "kind": "LinkedField",
-  "name": "matches",
-  "plural": true,
-  "selections": [
-    (v0/*: any*/),
-    {
-      "alias": null,
-      "args": null,
-      "concreteType": "Player",
-      "kind": "LinkedField",
-      "name": "winner",
-      "plural": false,
-      "selections": (v2/*: any*/),
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "concreteType": "Player",
-      "kind": "LinkedField",
-      "name": "players",
-      "plural": true,
-      "selections": (v2/*: any*/),
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "startTime",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "endTime",
-      "storageKey": null
-    }
-  ],
-  "storageKey": null
-},
-v4 = {
   "alias": null,
   "args": null,
   "concreteType": "Picture",
@@ -114,13 +47,31 @@ v4 = {
     }
   ],
   "storageKey": null
+},
+v2 = {
+  "enumValues": null,
+  "nullable": false,
+  "plural": false,
+  "type": "Picture"
+},
+v3 = {
+  "enumValues": null,
+  "nullable": false,
+  "plural": false,
+  "type": "String"
+},
+v4 = {
+  "enumValues": null,
+  "nullable": false,
+  "plural": false,
+  "type": "Int"
 };
 return {
   "fragment": {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "PlayersListQuery",
+    "name": "PlayerCardTestQuery",
     "selections": [
       {
         "alias": null,
@@ -138,8 +89,7 @@ return {
           }
         ],
         "storageKey": null
-      },
-      (v3/*: any*/)
+      }
     ],
     "type": "Query",
     "abstractKey": null
@@ -148,7 +98,7 @@ return {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "PlayersListQuery",
+    "name": "PlayerCardTestQuery",
     "selections": [
       {
         "alias": null,
@@ -159,7 +109,13 @@ return {
         "plural": true,
         "selections": [
           (v0/*: any*/),
-          (v1/*: any*/),
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "firstname",
+            "storageKey": null
+          },
           {
             "alias": null,
             "args": null,
@@ -167,7 +123,7 @@ return {
             "name": "lastname",
             "storageKey": null
           },
-          (v4/*: any*/),
+          (v1/*: any*/),
           {
             "alias": null,
             "args": null,
@@ -176,7 +132,7 @@ return {
             "name": "country",
             "plural": false,
             "selections": [
-              (v4/*: any*/)
+              (v1/*: any*/)
             ],
             "storageKey": null
           },
@@ -228,21 +184,53 @@ return {
           }
         ],
         "storageKey": null
-      },
-      (v3/*: any*/)
+      }
     ]
   },
   "params": {
-    "cacheID": "115925eea67bc8ebbfc07456cb155175",
+    "cacheID": "c246d9bb9d54e5e8437078e0d5b846b3",
     "id": null,
-    "metadata": {},
-    "name": "PlayersListQuery",
+    "metadata": {
+      "relayTestingSelectionTypeInfo": {
+        "players": {
+          "enumValues": null,
+          "nullable": false,
+          "plural": true,
+          "type": "Player"
+        },
+        "players.country": {
+          "enumValues": null,
+          "nullable": false,
+          "plural": false,
+          "type": "Country"
+        },
+        "players.country.picture": (v2/*: any*/),
+        "players.country.picture.url": (v3/*: any*/),
+        "players.firstname": (v3/*: any*/),
+        "players.id": (v3/*: any*/),
+        "players.lastname": (v3/*: any*/),
+        "players.picture": (v2/*: any*/),
+        "players.picture.url": (v3/*: any*/),
+        "players.stats": {
+          "enumValues": null,
+          "nullable": false,
+          "plural": false,
+          "type": "Stats"
+        },
+        "players.stats.age": (v4/*: any*/),
+        "players.stats.height": (v4/*: any*/),
+        "players.stats.points": (v4/*: any*/),
+        "players.stats.rank": (v4/*: any*/),
+        "players.stats.weight": (v4/*: any*/)
+      }
+    },
+    "name": "PlayerCardTestQuery",
     "operationKind": "query",
-    "text": "query PlayersListQuery {\n  players {\n    id\n    ...PlayerCardFragment\n  }\n  matches {\n    id\n    winner {\n      firstname\n    }\n    players {\n      firstname\n    }\n    startTime\n    endTime\n  }\n}\n\nfragment PlayerCardFragment on Player {\n  id\n  firstname\n  lastname\n  picture {\n    url\n  }\n  country {\n    picture {\n      url\n    }\n  }\n  stats {\n    rank\n    points\n    weight\n    height\n    age\n  }\n}\n"
+    "text": "query PlayerCardTestQuery {\n  players {\n    id\n    ...PlayerCardFragment\n  }\n}\n\nfragment PlayerCardFragment on Player {\n  id\n  firstname\n  lastname\n  picture {\n    url\n  }\n  country {\n    picture {\n      url\n    }\n  }\n  stats {\n    rank\n    points\n    weight\n    height\n    age\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "b0d64b18df2efa3dbd04420600f7e9eb";
+(node as any).hash = "7734a2cbdbecb45b9b1413e7a1a65ff2";
 
 export default node;

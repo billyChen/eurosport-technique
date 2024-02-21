@@ -11,6 +11,7 @@ const PlayersListQuery = graphql`
   query PlayersListQuery {
     players {
       id
+      ...PlayerCardFragment
     }
 
     matches {
@@ -55,7 +56,7 @@ export const PlayersList = () => {
   return (
     <div className="grid grid-cols-1 gap-4 w-full p-2 md:grid-cols-3 md:justify-center md:p-6">
       {data.players.map((player) => (
-        <PlayerCard />
+        <PlayerCard key={player.id} player={player} matches={matches} />
       ))}
     </div>
   );
